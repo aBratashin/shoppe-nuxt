@@ -28,7 +28,9 @@ const toggleIsOpened = () => {
 				<IconLogo />
 			</NuxtLink>
 			<div class="navbar__icons">
-				<Icon name="icons:cart" size='18' />
+				<NuxtLink to="/cart">
+					<Icon name="icons:cart" size='18' />
+				</NuxtLink>
 				<BurgerButton :is-active="isOpened" @toggle="toggleIsOpened" />
 			</div>
 		</div>
@@ -58,85 +60,6 @@ const toggleIsOpened = () => {
 	</header>
 </template>
 
-<style scoped>
-.header {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-}
+<style scoped src="./LayoutHeader.css">
 
-.navbar {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.navbar a:hover {
-	opacity: 0.7;
-}
-
-.navbar__icons {
-	display: flex;
-	gap: 16px;
-}
-
-.menu-desktop {
-	display: none;
-}
-
-@media (min-width: 768px) {
-	.header {
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-
-		border-bottom: 1px solid var(--color-alto);
-	}
-
-	.navbar__icons,
-	.search,
-	.menu-mobile {
-		display: none;
-	}
-
-	.menu-desktop {
-		display: flex;
-		align-items: center;
-	}
-
-	.vertical-line {
-		height: 17px;
-		width: 1px;
-		margin: 0 60px;
-
-		background: var(--color-dove-gray);
-	}
-
-	.text-links {
-		display: flex;
-		gap: 60px;
-		height: 14px;
-	}
-
-	.icon-links {
-		display: flex;
-		gap: 40px;
-		height: 26px;
-	}
-
-	.text-links li a,
-	.icon-links li a {
-		color: var(--color-black);
-	}
-
-	.text-links li a:hover,
-	.icon-links li a:hover {
-		color: var(--color-dove-gray);
-	}
-
-	.active-link {
-		padding-bottom: 16px;
-		border-bottom: 2px solid var(--color-black);
-	}
-}
 </style>

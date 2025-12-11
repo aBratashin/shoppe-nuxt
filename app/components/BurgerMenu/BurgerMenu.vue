@@ -29,55 +29,6 @@ const iconLinks = [
 	</ul>
 </template>
 
-<style scoped>
-.menu {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1;
+<style scoped src="./BurgerMenu.css">
 
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
-	width: 100%;
-	height: 100vh;
-	padding-left: 16px;
-	margin-top: 85px;
-	padding-top: 40px;
-
-	transform: translatex(100%);
-	transition: transform 0.2s ease;
-	background: var(--color-white);
-	overflow: hidden;
-}
-
-.menu.active {
-	transform: translateY(0);
-}
-
-.menu li {
-	padding: 0;
-
-	list-style: none;
-}
-
-.menu li a {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-
-	font-size: 20px;
-}
-
-.menu li *:hover {
-	color: var(--color-dove-gray);
-}
-
-.menu hr {
-	width: 100%;
-	height: 1px;
-
-	background: var(--color-alto);
-	border: 0;
-}
 </style>
