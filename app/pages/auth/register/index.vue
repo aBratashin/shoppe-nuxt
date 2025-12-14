@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-
+definePageMeta({
+	layout: 'auth'
+})
 </script>
 
 <template>
-	<div>register</div>
+	<AuthForm variant="register" />
 </template>
 
-<style scoped>
+<style>
 
 </style>

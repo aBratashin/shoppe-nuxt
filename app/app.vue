@@ -4,14 +4,6 @@
 	</NuxtLayout>
 </template>
 
-<style scoped>
-.page-enter-active,
-.page-leave-active {
-	transition: all 0.2s;
-}
+<style scoped src="./assets/styles/app.css">
 
-.page-enter-from,
-.page-leave-to {
-	opacity: 0;
-}
 </style>

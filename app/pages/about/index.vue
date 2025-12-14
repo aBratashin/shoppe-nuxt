@@ -27,6 +27,6 @@ useSeoMeta({
 	</div>
 </template>
 
-<style scoped src="./index.css">
+<style scoped src="./about.css">
 
 </style>

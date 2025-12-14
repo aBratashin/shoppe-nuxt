@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-const { type = 'ghost', iconPosition = 'right', placeholder = '' } = defineProps<{
-	type?: 'transparent' | 'ghost',
+const { variant = 'ghost', iconPosition = 'right', placeholder = '', type = 'text' } = defineProps<{
+	variant?: 'transparent' | 'ghost',
 	iconPosition?: 'left' | 'right',
-	placeholder?: string
+	placeholder?: string,
+	type?: string
 }>()
 
 const model = defineModel<string>({
@@ -15,12 +16,12 @@ const emit = defineEmits<{
 </script>
 
 <template>
-	<div :class="['input', {[type]: type}]">
+	<div :class="['input', {[variant]: variant}]">
 		<input
 			v-model="model"
 			:placeholder
+			:type
 			class="input__field"
-			type="text"
 		>
 		<button :class="['input__icon', {[iconPosition]: iconPosition}]" @click="emit('ok')">
 			<slot />

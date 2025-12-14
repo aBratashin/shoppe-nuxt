@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { type = 'ghost' } = defineProps<{
-	type?: 'primary' | 'ghost'
+const { variant = 'ghost' } = defineProps<{
+	variant?: 'primary' | 'ghost'
 }>()
 </script>
 
 <template>
-	<button :class="['button', {[type]: type}]">
+	<button :class="['button', {[variant]: variant}]">
 		<slot />
 	</button>
 </template>

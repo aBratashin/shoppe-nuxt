@@ -34,7 +34,7 @@ const socialsLinks = [
 			v-model="email"
 			class="footer-form"
 			placeholder="Ваш email для акций и предложений"
-			type="transparent"
+			variant="transparent"
 			@ok="showToast"
 		>
 			<Icon name="icons:arrow-right" size="8" />
