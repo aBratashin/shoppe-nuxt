@@ -12,6 +12,6 @@ const emit = defineEmits(['toggle'])
 	</nav>
 </template>
 
-<style scoped src="./BurgerButton.css">
+<style scoped src="./burger-button.css">
 
 </style>

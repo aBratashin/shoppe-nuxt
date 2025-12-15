@@ -1,7 +1,6 @@
 .auth {
     display: flex;
     flex-direction: column;
-    height: 650px;
 }
 
 .auth__form {
@@ -31,4 +30,10 @@
 
 .auth__actions a {
     text-align: center;
+
+  transition: all 0.2s ease;
+}
+
+.auth__actions a:hover {
+  color: var(--color-dove-gray);
 }

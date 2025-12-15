@@ -12,20 +12,15 @@
     align-items: center;
     justify-content: center;
     flex: 1 1 auto;
-    padding: 16px 0;
 }
 
 .auth {
     width: 500px;
-    height: 650px;
+  height: 800px;
 }
 
 .auth__title {
     margin-bottom: 64px;
-
-    font-weight: 500;
-    font-size: 33px;
-    text-align: center;
 }
 
 .auth__type {

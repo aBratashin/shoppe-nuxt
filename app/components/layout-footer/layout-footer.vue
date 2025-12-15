@@ -59,6 +59,6 @@ const socialsLinks = [
 	</footer>
 </template>
 
-<style scoped src="./LayoutFooter.css">
+<style scoped src="./layout-footer.css">
 
 </style>

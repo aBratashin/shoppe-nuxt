@@ -7,14 +7,11 @@
 }
 
 .error__status {
-    font-size: 33px;
     font-weight: 500;
 }
 
 .error__text {
     margin: 24px 0 64px 0;
 
-    font-size: 20px;
-    text-align: center;
     color: var(--color-dove-gray);
 }

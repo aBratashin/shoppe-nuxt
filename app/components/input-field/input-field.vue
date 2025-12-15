@@ -22,6 +22,7 @@ const emit = defineEmits<{
 			:placeholder
 			:type
 			class="input__field"
+      @keyup.enter="emit('ok')"
 		>
 		<button :class="['input__icon', {[iconPosition]: iconPosition}]" @click="emit('ok')">
 			<slot />
@@ -29,6 +30,6 @@ const emit = defineEmits<{
 	</div>
 </template>
 
-<style scoped src="./InputField.css">
+<style scoped src="./input-field.css">
 
 </style>

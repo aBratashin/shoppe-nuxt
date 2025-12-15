@@ -3,10 +3,6 @@ const { variant } = defineProps<{
 	variant: 'login' | 'register'
 }>()
 
-definePageMeta({
-	layout: 'auth'
-})
-
 const authData = ref({
 	email: '',
 	password: '',
@@ -52,6 +48,6 @@ const authData = ref({
 	</div>
 </template>
 
-<style scoped src="./AuthForm.css">
+<style scoped src="./auth-form.css">
 
 </style>

@@ -29,6 +29,6 @@ const iconLinks = [
 	</ul>
 </template>
 
-<style scoped src="./BurgerMenu.css">
+<style scoped src="./burger-menu.css">
 
 </style>

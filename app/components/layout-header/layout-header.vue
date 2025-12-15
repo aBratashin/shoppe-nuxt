@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import IconLogo from '~/components/icons/IconLogo.vue'
+import IconLogo from '~/components/icons/icon-logo.vue'
 
 const textLinks = [
 	{ id: 1, href: '/products', label: 'Магазин' },
@@ -68,6 +68,6 @@ const toggleIsOpened = () => {
 	</header>
 </template>
 
-<style scoped src="./LayoutHeader.css">
+<style scoped src="./layout-header.css">
 
 </style>

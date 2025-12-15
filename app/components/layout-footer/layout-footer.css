@@ -27,10 +27,6 @@
     margin-bottom: 26px;
 }
 
-.footer__copyright {
-    font-size: 16px;
-}
-
 @media (min-width: 768px) {
     .footer {
         display: grid;
@@ -50,7 +46,9 @@
         gap: 30px;
         order: -1;
         margin: 0;
+    }
 
+  .footer__links li {
         text-align: center;
     }
 

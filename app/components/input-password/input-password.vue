@@ -22,12 +22,14 @@ const toggleVisiblePassword = () => {
 		variant="transparent"
 	>
 		<Icon
-			:name="isVisiblePassword ? 'icons:eye-closed' : 'icons:eye-opened'"
+			:name="isVisiblePassword ? 'icons:eye-hide' : 'icons:eye-show'"
+			class="eye-icon"
+			size="24"
 			@click="toggleVisiblePassword"
 		/>
 	</InputField>
 </template>
 
-<style scoped>
+<style scoped src="./input-password.css">
 
 </style>

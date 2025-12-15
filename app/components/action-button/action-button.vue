@@ -10,6 +10,6 @@ const { variant = 'ghost' } = defineProps<{
 	</button>
 </template>
 
-<style scoped src="./ActionButton.css">
+<style scoped src="./action-button.css">
 
 </style>

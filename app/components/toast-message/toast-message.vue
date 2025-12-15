@@ -16,6 +16,6 @@ const { isVisible } = defineProps<{
 	</Transition>
 </template>
 
-<style scoped src="./ToastMessage.css">
+<style scoped src="./toast-message.css">
 
 </style>
