@@ -4,10 +4,10 @@ useSeoMeta({
 	description: 'Аккаунт пользователя'
 })
 
-const logout = async () => {
-  await $fetch('/api/auth/logout', {
-    method: 'POST'
-  })
+const { logout } = useAuth()
+
+const handleLogout = async () => {
+  await logout()
   navigateTo('/auth/login')
 }
 </script>
@@ -15,7 +15,7 @@ const logout = async () => {
 <template>
   <div>
     <div>account</div>
-    <button @click="logout">Выйти</button>
+    <button @click="handleLogout">Выйти</button>
   </div>
 </template>
 

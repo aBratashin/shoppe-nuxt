@@ -1,35 +1,25 @@
 <script lang="ts" setup>
-import type { LoginInterface } from '#shared/interfaces/login.interface'
-import type { FetchError } from 'ofetch'
-import type { ErrorInterface } from '#shared/interfaces/error.interface'
 import { useToastStore } from '~/stores/toast.store'
-
-const createLoginData = (): LoginInterface => ({
-  email: '',
-  password: '',
-  rememberUser: false
-})
-
-const loginData = ref<LoginInterface>(createLoginData())
+import { useLoginForm } from '~/composables/useLoginForm'
 
 const toastStore = useToastStore()
 
+const { login } = useAuth()
+const { handleError } = useApiError()
+const { formData, resetForm } = useLoginForm()
+
 const loginUser = async () => {
   try {
-    await $fetch('/api/auth/login', {
-      method: 'POST',
-      body: loginData.value
-    }).then(res => {
-      if (res.statusCode === 200) {
-        toastStore.showToast('success', 'Вы успешно вошли')
-        navigateTo('/')
-      }
-    })
-  } catch (error: unknown) {
-    const errorInfo = error as FetchError<ErrorInterface>
-    toastStore.showToast('error', errorInfo.data?.message || 'Что-то пошло не так...')
+    const res = await login(formData.value)
+
+    if (res.statusCode === 200) {
+      toastStore.showToast('success', 'Вы успешно вошли')
+      navigateTo('/')
+    }
+  } catch (error) {
+    handleError(error)
   } finally {
-    loginData.value = createLoginData()
+    resetForm()
   }
 }
 </script>
@@ -38,20 +28,20 @@ const loginUser = async () => {
   <div class="auth">
     <div class="auth__form">
       <InputField
-        v-model="loginData.email"
+        v-model="formData.email"
         placeholder="Email"
         type="email"
         variant="transparent"
       />
       <InputPassword
-        v-model="loginData.password"
+        v-model="formData.password"
         placeholder="Пароль"
       />
     </div>
     <label class="auth__additional-info" for="additional-info">
       <input
         id="additional-info"
-        v-model="loginData.rememberUser"
+        v-model="formData.rememberUser"
         type="checkbox"
       />
       <span>Запомнить меня</span>

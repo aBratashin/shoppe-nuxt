@@ -1,60 +1,26 @@
-import { prisma } from '~~/lib/prisma'
-import bcrypt from 'bcryptjs'
-import { signJwt } from '~~/server/utils/jwt'
 import type { LoginInterface } from '#shared/interfaces/login.interface'
+import { setAuthCookie } from '~~/server/utils/cookies'
+import { createAuthToken } from '~~/server/utils/token'
+import { loginValidation } from '~~/server/validation/login.validation'
+import { findUserByEmail } from '~~/server/services/user.service'
+import { comparePassword } from '~~/server/utils/password'
+import { badRequest } from '~~/server/utils/errors'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<LoginInterface>(event)
 
-  const { email, password, rememberUser } = body
+  loginValidation(body)
 
-  if (!email || !password) {
-    throw createError({
-      statusCode: 400,
-      message: 'Заполните все поля'
-    })
-  }
+  const user = await findUserByEmail(body.email)
+  if (!user) throw badRequest(400, 'Пользователя с таким email не существует')
 
-  const user = await prisma.user.findUnique({
-    where: {
-      email
-    }
-  })
+  const isPasswordValid = await comparePassword(body.password, user.password)
+  if (!isPasswordValid) throw badRequest(400, 'Неверный пароль')
 
-  if (!user) {
-    throw createError({
-      statusCode: 400,
-      message: 'Пользователя с таким email не существует'
-    })
-  }
-
-  const isPasswordValid = await bcrypt.compare(password, user.password)
-
-  if (!isPasswordValid) {
-    throw createError({
-      statusCode: 400,
-      message: 'Неверный пароль'
-    })
-  }
-
-  const expiresIn = rememberUser ? '30d' : '1d'
-
-  const token = signJwt({ id: user.id }, expiresIn)
-
-  const day = 60 * 60 * 24
-  const month = day * 30
-
-  setCookie(event, 'token', token, {
-    httpOnly: true,
-    sameSite: 'strict',
-    secure: process.env.NODE_ENV === 'production',
-    path: '/',
-    maxAge: rememberUser ? month : day
-  })
+  const token = createAuthToken(user.id, body.rememberUser)
+  setAuthCookie(event, token, body.rememberUser)
 
   return {
-    id: user.id,
-    email: user.email,
     statusCode: 200
   }
 })

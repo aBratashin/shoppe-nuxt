@@ -20,6 +20,7 @@ const toggleVisiblePassword = () => {
 		:placeholder
 		:type="isVisiblePassword ? 'text' : 'password'"
 		variant="transparent"
+    v-bind="$attrs"
 	>
 		<Icon
 			:name="isVisiblePassword ? 'icons:eye-hide' : 'icons:eye-show'"

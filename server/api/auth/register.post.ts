@@ -1,53 +1,22 @@
-import { prisma } from '~~/lib/prisma'
-import bcrypt from 'bcryptjs'
 import type { RegisterInterface } from '#shared/interfaces/register.interface'
-
-const saltRounds = 10
+import { registerValidation } from '~~/server/validation/register.validation'
+import { createUser, findUserByEmail } from '~~/server/services/user.service'
+import { badRequest } from '~~/server/utils/errors'
+import { hashPassword } from '~~/server/utils/password'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<RegisterInterface>(event)
 
-  const { email, password, confirmPassword, processingPersonalData } = body
+  registerValidation(body)
 
-  if (!email || !password || !confirmPassword || !processingPersonalData) {
-    throw createError({
-      statusCode: 400,
-      message: 'Заполните все поля'
-    })
-  }
+  const user = await findUserByEmail(body.email)
+  if (user) throw badRequest(400, 'Пользователь с таким email уже существует')
 
-  if (password !== confirmPassword) {
-    throw createError({
-      statusCode: 400,
-      message: 'Пароли не совпадают'
-    })
-  }
+  const hashedPassword = await hashPassword(body.password)
 
-  const isUserExist = await prisma.user.findUnique({
-    where: {
-      email
-    }
-  })
-
-  if (isUserExist) {
-    throw createError({
-      statusCode: 400,
-      message: 'Пользователь с таким email уже существует'
-    })
-  }
-
-  const hashedPassword = await bcrypt.hash(password, saltRounds)
-
-  const user = await prisma.user.create({
-    data: {
-      email,
-      password: hashedPassword
-    }
-  })
+  await createUser(body.email, hashedPassword)
 
   return {
-    id: user.id,
-    email: user.email,
     statusCode: 200
   }
 })

@@ -1,36 +1,25 @@
 <script lang="ts" setup>
-import type { FetchError } from 'ofetch'
-import type { ErrorInterface } from '#shared/interfaces/error.interface'
 import { useToastStore } from '~/stores/toast.store'
-import type { RegisterInterface } from '#shared/interfaces/register.interface'
-
-const createRegisterForm = (): RegisterInterface => ({
-  email: '',
-  password: '',
-  confirmPassword: '',
-  processingPersonalData: false
-})
-
-const registerData = ref<RegisterInterface>(createRegisterForm())
+import { useAuth } from '~/composables/useAuth'
 
 const toastStore = useToastStore()
 
+const { register } = useAuth()
+const { handleError } = useApiError()
+const { formData, resetForm } = useRegisterForm()
+
 const registerUser = async () => {
   try {
-    await $fetch('/api/auth/register', {
-      method: 'POST',
-      body: registerData.value
-    }).then(res => {
-      if (res.statusCode === 200) {
-        toastStore.showToast('success', 'Вы успешно зарегистрировались')
-        navigateTo('/auth/login')
-      }
-    })
-  } catch (error: unknown) {
-    const errorInfo = error as FetchError<ErrorInterface>
-    toastStore.showToast('error', errorInfo.data?.message || 'Что-то пошло не так...')
+    const res = await register(formData.value)
+
+    if (res.statusCode === 200) {
+      toastStore.showToast('success', 'Вы успешно зарегистрировались')
+      navigateTo('/auth/login')
+    }
+  } catch (error) {
+    handleError(error)
   } finally {
-    registerData.value = createRegisterForm()
+    resetForm()
   }
 }
 </script>
@@ -39,24 +28,24 @@ const registerUser = async () => {
   <div class="auth">
     <div class="auth__form">
       <InputField
-        v-model="registerData.email"
+        v-model="formData.email"
         placeholder="Email"
         type="email"
         variant="transparent"
       />
       <InputPassword
-        v-model="registerData.password"
+        v-model="formData.password"
         placeholder="Пароль"
       />
       <InputPassword
-        v-model="registerData.confirmPassword"
+        v-model="formData.confirmPassword"
         placeholder="Повторите пароль"
       />
     </div>
     <label class="auth__additional-info" for="additional-info">
       <input
         id="additional-info"
-        v-model="registerData.processingPersonalData"
+        v-model="formData.processingPersonalData"
         type="checkbox"
       />
       <span>Согласен на обработку персональных данных</span>

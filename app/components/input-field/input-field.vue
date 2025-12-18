@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+defineOptions({
+  inheritAttrs: false
+})
+
 const { variant = 'ghost', iconPosition = 'right', placeholder = '', type = 'text' } = defineProps<{
 	variant?: 'transparent' | 'ghost',
 	iconPosition?: 'left' | 'right',
@@ -19,12 +23,17 @@ const emit = defineEmits<{
 	<div :class="['input', {[variant]: variant}]">
 		<input
 			v-model="model"
+      v-bind="$attrs"
 			:placeholder
 			:type
 			class="input__field"
       @keyup.enter="emit('ok')"
 		>
-		<button :class="['input__icon', {[iconPosition]: iconPosition}]" @click="emit('ok')">
+    <button
+      :class="['input__icon', {[iconPosition]: iconPosition}]"
+      tabindex="-1"
+      @click="emit('ok')"
+    >
 			<slot />
 		</button>
 	</div>
