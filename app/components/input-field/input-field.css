@@ -14,6 +14,7 @@
 
 .input__icon {
   height: 30px;
+
   color: var(--color-dove-gray);
 
   background: none;
@@ -43,6 +44,7 @@
 
 .input__field {
   width: 100%;
+
   background: inherit;
   border-radius: inherit;
 }

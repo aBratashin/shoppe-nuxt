@@ -12,7 +12,7 @@ const toastStore = useToastStore()
 const { login } = useAuth()
 const { handleError } = useApiError()
 const { formData, resetForm } = useForm<LoginInterface>(createLoginForm)
-const { errors, validate } = useValidate<LoginInterface>(loginSchema)
+const { errors, validate } = useValidate(loginSchema)
 
 const loginUser = async () => {
   try {
@@ -26,7 +26,7 @@ const loginUser = async () => {
   } catch (error) {
     handleError(error)
   } finally {
-    resetForm(Object.keys(formData.value) as (keyof LoginInterface)[])
+    resetForm(Object.keys(errors.value) as (keyof LoginInterface)[])
   }
 }
 </script>

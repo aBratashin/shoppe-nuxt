@@ -38,16 +38,16 @@
 }
 
 .burger-btn:after {
-  content: '';
   bottom: 0;
   right: 0;
 
   width: 14px;
+
+  content: '';
 }
 
 .burger-btn.active:before {
   top: 6px;
-
   transform: rotate(45deg);
 }
 

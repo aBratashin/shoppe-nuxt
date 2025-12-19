@@ -13,7 +13,7 @@ const toastStore = useToastStore()
 const { register } = useAuth()
 const { handleError } = useApiError()
 const { formData, resetForm } = useForm<RegisterInterface>(createRegisterForm)
-const { errors, validate } = useValidate<RegisterInterface>(registerSchema)
+const { errors, validate } = useValidate(registerSchema)
 
 const registerUser = async () => {
   try {

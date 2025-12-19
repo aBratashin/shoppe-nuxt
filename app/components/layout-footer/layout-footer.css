@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 36px;
 
   font-size: 12px;
   text-transform: uppercase;
-
-  margin-top: 20px;
-  margin-bottom: 36px;
 }
 
 .footer__links li a,
 .footer__socials li a {
   color: var(--color-dove-gray);
+
   transition: all 0.2s ease;
 }
 

@@ -15,7 +15,7 @@ useSeoMeta({
       placerat urna.
       Curabitur eu magna enim. Proin placerat tortor lacus, ac sodales lectus placerat quis.</p>
     <h2>Тренды в украшениях</h2>
-    <NuxtImg src="/images/about-1.png" />
+    <NuxtImg src="/images/about/about-1.png" />
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat
       hendrerit, sapien
       tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis
@@ -26,7 +26,7 @@ useSeoMeta({
       <li>Lorem ipsum dolor sit amet consectetur</li>
     </ul>
     <h2>Сделано с любовью</h2>
-    <NuxtImg src="/images/about-2.png" />
+    <NuxtImg src="/images/about/about-2.png" />
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat
       hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget
       arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in

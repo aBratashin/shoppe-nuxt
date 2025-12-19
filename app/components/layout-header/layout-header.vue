@@ -1,17 +1,7 @@
 <script lang="ts" setup>
 import IconLogo from '~/components/icons/icon-logo.vue'
 
-const textLinks = [
-  { id: 1, href: '/products', label: 'Магазин' },
-  { id: 2, href: '/about', label: 'О нас' }
-]
-
-const iconLinks = [
-  { id: 1, href: '#', name: 'icons:search' },
-  { id: 2, href: '/cart', name: 'icons:cart' },
-  { id: 3, href: '/favorites', name: 'icons:favorite' },
-  { id: 4, href: '/account', name: 'icons:user' }
-]
+const { headerTextLinks, headerIconLinks } = useLinks()
 
 const router = useRouter()
 const isOpened = ref(false)
@@ -57,13 +47,13 @@ router.afterEach(() => {
     </div>
     <div class="menu-desktop">
       <ul class="text-links">
-        <li v-for="item in textLinks" :key="item.id">
+        <li v-for="item in headerTextLinks" :key="item.id">
           <NuxtLink :to="item.href" active-class="active-link">{{ item.label }}</NuxtLink>
         </li>
       </ul>
       <div class="vertical-line" />
       <ul class="icon-links">
-        <li v-for="item in iconLinks" :key="item.id">
+        <li v-for="item in headerIconLinks" :key="item.id">
           <NuxtLink :to="item.href" active-class="active-link">
             <Icon :name="item.name" size='18' />
           </NuxtLink>

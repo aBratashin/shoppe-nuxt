@@ -1,4 +1,4 @@
-export default defineNuxtRouteMiddleware(async (to) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
   try {
     await $fetch('/api/auth/verify', {
       method: 'POST',
@@ -13,6 +13,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
       return
     }
 
-    return navigateTo('/auth/login')
+    return navigateTo(from.fullPath)
   }
 })

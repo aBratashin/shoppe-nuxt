@@ -2,19 +2,7 @@
 const email = ref('')
 
 const toastStore = useToastStore()
-
-const textLinks = [
-  { id: 1, href: '#', label: 'Контакты' },
-  { id: 2, href: '#', label: 'Условия покупки' },
-  { id: 3, href: '#', label: 'Доставка и возврат' }
-]
-
-const socialsLinks = [
-  { id: 1, href: '#', name: 'icons:linkedin' },
-  { id: 2, href: '#', name: 'icons:facebook' },
-  { id: 3, href: '#', name: 'icons:instagram' },
-  { id: 4, href: '#', name: 'icons:twitter' }
-]
+const { footerTextLinks, footerSocialsLinks } = useLinks()
 </script>
 
 <template>
@@ -29,12 +17,12 @@ const socialsLinks = [
       <Icon name="icons:arrow-right" size="8" />
     </InputField>
     <ul class="footer__links">
-      <li v-for="item in textLinks" :key="item.id">
+      <li v-for="item in footerTextLinks" :key="item.id">
         <NuxtLink :to="item.href">{{ item.label }}</NuxtLink>
       </li>
     </ul>
     <ul class="footer__socials">
-      <li v-for="item in socialsLinks" :key="item.id">
+      <li v-for="item in footerSocialsLinks" :key="item.id">
         <NuxtLink :to="item.href">
           <Icon :name="item.name" />
         </NuxtLink>

@@ -4,9 +4,13 @@ import { createAuthToken } from '~~/server/utils/token'
 import { findUserByEmail } from '~~/server/services/user.service'
 import { comparePassword } from '~~/server/utils/password'
 import { badRequest } from '~~/server/utils/errors'
+import { loginSchema } from '#shared/validation/login.validation'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<LoginInterface>(event)
+
+  const validate = loginSchema.safeParse(body)
+  if (!validate.success) throw badRequest(400, 'Ошибка валидации')
 
   const user = await findUserByEmail(body.email)
   if (!user) throw badRequest(400, 'Пользователя с таким email не существует')
