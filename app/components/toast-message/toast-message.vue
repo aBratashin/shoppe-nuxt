@@ -1,19 +1,19 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const { isVisible } = defineProps<{
-	isVisible: boolean
+  isVisible: boolean
 }>()
 </script>
 
 <template>
-	<Transition name="fade">
-		<Teleport to="body">
-			<div v-if="isVisible" class="toast-cover">
-				<div class="toast">
-					<slot />
-				</div>
-			</div>
-		</Teleport>
-	</Transition>
+  <Transition name="fade">
+    <Teleport to="body">
+      <div v-if="isVisible" class="toast-cover">
+        <div class="toast">
+          <slot />
+        </div>
+      </div>
+    </Teleport>
+  </Transition>
 </template>
 
 <style scoped src="./toast-message.css">

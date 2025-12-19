@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<div>product id</div>
+  <div>product id</div>
 </template>
 
 <style scoped>

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 useSeoMeta({
-	title: 'Избранное',
-	description: 'Избранные товары пользователя'
+  title: 'Избранное',
+  description: 'Избранные товары пользователя'
 })
 </script>
 
 <template>
-	<div>favorites</div>
+  <div>favorites</div>
 </template>
 
 <style scoped>

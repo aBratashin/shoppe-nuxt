@@ -1,0 +1,22 @@
+.checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 72px;
+  margin-bottom: 24px;
+}
+
+.auth__additional-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+.auth__additional-info * {
+  cursor: pointer;
+}
+
+.auth__additional-info input[type='checkbox'] {
+  accent-color: var(--color-black);
+}

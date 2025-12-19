@@ -1,87 +1,87 @@
 .header {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar a,
 .navbar nav {
-    transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .navbar a:hover,
 .navbar nav:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .navbar__icons {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .menu-desktop {
-    display: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
-    .header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-        border-bottom: 1px solid var(--color-alto);
-    }
+    border-bottom: 1px solid var(--color-alto);
+  }
 
-    .navbar__icons,
-    .search,
-    .menu-mobile {
-        display: none;
-    }
+  .navbar__icons,
+  .search,
+  .menu-mobile {
+    display: none;
+  }
 
-    .menu-desktop {
-        display: flex;
-        align-items: center;
-    }
+  .menu-desktop {
+    display: flex;
+    align-items: center;
+  }
 
-    .vertical-line {
-        height: 17px;
-        width: 1px;
-        margin: 0 60px;
+  .vertical-line {
+    height: 17px;
+    width: 1px;
+    margin: 0 60px;
 
-        background: var(--color-dove-gray);
-    }
+    background: var(--color-dove-gray);
+  }
 
-    .text-links {
-        display: flex;
-        gap: 60px;
-        height: 14px;
-    }
+  .text-links {
+    display: flex;
+    gap: 60px;
+    height: 14px;
+  }
 
-    .icon-links {
-        display: flex;
-        gap: 40px;
-        height: 26px;
-    }
+  .icon-links {
+    display: flex;
+    gap: 40px;
+    height: 26px;
+  }
 
-    .text-links li a,
-    .icon-links li a {
-        color: var(--color-black);
-        transition: color 0.2s ease;
-    }
+  .text-links li a,
+  .icon-links li a {
+    color: var(--color-black);
+    transition: color 0.2s ease;
+  }
 
-    .text-links li a:hover,
-    .icon-links li a:hover {
-        color: var(--color-dove-gray);
-    }
+  .text-links li a:hover,
+  .icon-links li a:hover {
+    color: var(--color-dove-gray);
+  }
 
-    .active-link {
-        padding-bottom: 16px;
-        border-bottom: 2px solid var(--color-black);
-    }
+  .active-link {
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--color-black);
+  }
 }

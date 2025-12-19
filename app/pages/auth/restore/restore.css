@@ -1,25 +1,25 @@
 .restore {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .restore__form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
 }
 
 .restore__form h1 {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .restore__form h3 {
-    margin-bottom: 76px;
+  margin-bottom: 76px;
 }
 
 .email {
-    margin-bottom: 64px;
+  margin-bottom: 64px;
 }

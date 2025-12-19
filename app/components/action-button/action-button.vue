@@ -1,13 +1,13 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const { variant = 'ghost' } = defineProps<{
-	variant?: 'primary' | 'ghost'
+  variant?: 'primary' | 'ghost'
 }>()
 </script>
 
 <template>
-	<button :class="['button', {[variant]: variant}]">
-		<slot />
-	</button>
+  <button :class="['button', {[variant]: variant}]">
+    <slot />
+  </button>
 </template>
 
 <style scoped src="./action-button.css">

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 useSeoMeta({
-	title: 'Аккаунт',
-	description: 'Аккаунт пользователя'
+  title: 'Аккаунт',
+  description: 'Аккаунт пользователя'
 })
 
 const { logout } = useAuth()

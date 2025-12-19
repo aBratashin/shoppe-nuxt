@@ -1,52 +1,56 @@
 .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-    height: 100vh;
-    padding-left: 16px;
-    margin-top: 85px;
-    padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  height: 100vh;
+  padding-left: 16px;
+  margin-top: 100px;
+  padding-top: 40px;
 
-    transform: translatex(100%);
-    transition: transform 0.2s ease;
-    background: var(--color-white);
-    overflow: hidden;
+  transform: translatex(100%);
+  transition: transform 0.2s ease;
+  background: var(--color-white);
+  overflow: hidden;
 }
 
 .menu.active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 .menu li {
-    padding: 0;
+  padding: 0;
 
-    list-style: none;
+  list-style: none;
 }
 
+.menu li,
 .menu li a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    font-size: 20px;
+  font-size: 20px;
 
-    transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
+.menu li:hover,
 .menu li a:hover {
-    color: var(--color-dove-gray);
+  color: var(--color-dove-gray);
+
+  cursor: pointer;
 }
 
 .menu hr {
-    width: 100%;
-    height: 1px;
+  width: 100%;
+  height: 1px;
 
-    background: var(--color-alto);
-    border: 0;
+  background: var(--color-alto);
+  border: 0;
 }

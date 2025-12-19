@@ -1,24 +1,24 @@
 .button {
-    padding: 16px;
+  padding: 16px;
 
-    font-weight: 700;
+  font-weight: 700;
 
-    border: 1px solid var(--color-black);
-    border-radius: 4px;
-    cursor: pointer;
+  border: 1px solid var(--color-black);
+  border-radius: 4px;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .button.ghost,
 .button.primary:hover {
-    color: var(--color-black);
+  color: var(--color-black);
 
-    background: transparent;
+  background: transparent;
 }
 
 .button.primary,
 .button.ghost:hover {
-    color: var(--color-white);
+  color: var(--color-white);
 
-    background: var(--color-black);
+  background: var(--color-black);
 }

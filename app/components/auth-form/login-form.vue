@@ -1,15 +1,22 @@
 <script lang="ts" setup>
-import { useToastStore } from '~/stores/toast.store'
-import { useLoginForm } from '~/composables/useLoginForm'
+import type { LoginInterface } from '#shared/interfaces/login.interface'
+import { loginSchema } from '#shared/validation/login.validation'
+
+const createLoginForm = (): LoginInterface => ({
+  email: '',
+  password: '',
+  rememberUser: false
+})
 
 const toastStore = useToastStore()
-
 const { login } = useAuth()
 const { handleError } = useApiError()
-const { formData, resetForm } = useLoginForm()
+const { formData, resetForm } = useForm<LoginInterface>(createLoginForm)
+const { errors, validate } = useValidate<LoginInterface>(loginSchema)
 
 const loginUser = async () => {
   try {
+    if (!validate(formData.value)) return
     const res = await login(formData.value)
 
     if (res.statusCode === 200) {
@@ -19,7 +26,7 @@ const loginUser = async () => {
   } catch (error) {
     handleError(error)
   } finally {
-    resetForm()
+    resetForm(Object.keys(formData.value) as (keyof LoginInterface)[])
   }
 }
 </script>
@@ -29,23 +36,19 @@ const loginUser = async () => {
     <div class="auth__form">
       <InputField
         v-model="formData.email"
+        :error="errors.email"
         placeholder="Email"
         type="email"
         variant="transparent"
       />
       <InputPassword
         v-model="formData.password"
+        :error="errors.password"
         placeholder="Пароль"
       />
     </div>
-    <label class="auth__additional-info" for="additional-info">
-      <input
-        id="additional-info"
-        v-model="formData.rememberUser"
-        type="checkbox"
-      />
-      <span>Запомнить меня</span>
-    </label>
+    <CheckboxForm v-model="formData.rememberUser">Запомнить меня
+    </CheckboxForm>
     <div class="auth__actions">
       <ActionButton variant="primary" @click="loginUser">
         Вход
