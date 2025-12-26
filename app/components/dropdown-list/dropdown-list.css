@@ -1,0 +1,26 @@
+.dropdown-list {
+  position: relative;
+}
+
+.dropdown-list__select {
+  width: 100%;
+  padding: 15px;
+
+  font-size: 14px;
+
+  border: 1px solid var(--color-alto);
+  border-radius: 4px;
+  background: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.dropdown-list__icon {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 15px;
+
+  pointer-events: none;
+  cursor: pointer;
+}

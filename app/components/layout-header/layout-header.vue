@@ -5,7 +5,6 @@ const { headerTextLinks, headerIconLinks } = useLinks()
 
 const router = useRouter()
 const isOpened = ref(false)
-const search = ref('')
 
 watch(isOpened, () => {
   if (isOpened.value === true) {
@@ -20,7 +19,7 @@ const toggleIsOpened = () => {
 }
 
 router.afterEach(() => {
-  toggleIsOpened()
+  isOpened.value = false
 })
 </script>
 
@@ -37,11 +36,6 @@ router.afterEach(() => {
         <BurgerButton :is-active="isOpened" @toggle="toggleIsOpened" />
       </div>
     </div>
-    <div class="search">
-      <InputField v-model="search" icon-position="left" placeholder="Поиск">
-        <Icon name="icons:search" size='12' />
-      </InputField>
-    </div>
     <div class="menu-mobile">
       <BurgerMenu :is-visible="isOpened" />
     </div>
@@ -55,7 +49,7 @@ router.afterEach(() => {
       <ul class="icon-links">
         <li v-for="item in headerIconLinks" :key="item.id">
           <NuxtLink :to="item.href" active-class="active-link">
-            <Icon :name="item.name" size='18' />
+            <Icon :name="item.name" size='19' />
           </NuxtLink>
         </li>
       </ul>

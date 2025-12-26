@@ -9,7 +9,7 @@ const { error } = defineProps<{
 <template>
   <NuxtLayout name="default">
     <div class="error">
-      <h1 class="error__status">{{ error.statusCode }} ошибка</h1>
+      <h1 class="error__status">Ошибка {{ error.statusCode }}</h1>
       <h3 class="error__text">Страница не найдена, попробуйте перейти на главную страницу</h3>
       <ActionButton variant="ghost" @click="navigateTo('/')">Главная страница</ActionButton>
     </div>

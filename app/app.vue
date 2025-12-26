@@ -5,11 +5,13 @@ const toastStore = useToastStore()
 <template>
   <NuxtLayout>
     <NuxtPage />
-    <ToastMessage :is-visible="toastStore.isToastVisible">
-      <Icon v-if="toastStore.toastType === 'success'" name="icons:check" size="20" />
-      <Icon v-if="toastStore.toastType === 'error'" name="icons:error" size="24" />
-      {{ toastStore.toastMessage }}
-    </ToastMessage>
+    <ClientOnly>
+      <ToastMessage :is-visible="toastStore.isToastVisible">
+        <Icon v-if="toastStore.toastType === 'success'" name="icons:check" size="20" />
+        <Icon v-if="toastStore.toastType === 'error'" name="icons:error" size="24" />
+        {{ toastStore.toastMessage }}
+      </ToastMessage>
+    </ClientOnly>
   </NuxtLayout>
 </template>
 

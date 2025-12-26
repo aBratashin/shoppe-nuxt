@@ -5,10 +5,9 @@ export const useLinks = () => {
   ]
 
   const headerIconLinks = [
-    { id: 1, href: '#', name: 'icons:search' },
-    { id: 2, href: '/cart', name: 'icons:cart' },
-    { id: 3, href: '/favorites', name: 'icons:favorite' },
-    { id: 4, href: '/account', name: 'icons:user' }
+    { id: 1, href: '/cart', name: 'icons:cart' },
+    { id: 2, href: '/favorites', name: 'icons:favorite' },
+    { id: 3, href: '/account', name: 'icons:user' }
   ]
 
   const footerTextLinks = [
