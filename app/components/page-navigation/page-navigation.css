@@ -1,0 +1,25 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-alto);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination__item-active,
+.pagination__item:hover {
+  color: var(--color-white);
+
+  background: var(--color-black);
+  border: 1px solid var(--color-white);
+}

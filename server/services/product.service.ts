@@ -8,7 +8,17 @@ export const createProduct = (data: ProductCreateDto) => {
   })
 }
 
-export const getProducts = (search?: string, category?: string) => {
+export const getProducts = async (params: {
+  search?: string
+  category?: string
+  page?: string
+  limit?: string
+  discount?: boolean
+}) => {
+  const { search, category, page, limit, discount } = params
+
+  console.log(discount)
+
   const where: Prisma.ProductWhereInput = {}
 
   if (search) {
@@ -40,7 +50,27 @@ export const getProducts = (search?: string, category?: string) => {
     }
   }
 
-  return prisma.product.findMany({
-    where
+  if (discount) {
+    where.discount = {
+      gt: 0
+    }
+  }
+
+  const total = await prisma.product.count({ where })
+  const pageNum = Number(page) || 1
+  const limitNum = Number(limit) || 6
+
+  const products = await prisma.product.findMany({
+    where,
+    skip: (pageNum - 1) * limitNum,
+    take: limitNum,
+    include: {
+      category: true
+    }
   })
+
+  return {
+    products,
+    total
+  }
 }

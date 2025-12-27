@@ -1,0 +1,26 @@
+.switcher {
+  width: 36px;
+  height: 22px;
+  padding: 3px;
+
+  border-radius: 16px;
+  background-color: var(--color-dove-gray);
+  cursor: pointer;
+}
+
+.switcher-active {
+  background-color: var(--color-sandal);
+}
+
+.switcher-circle {
+  width: 16px;
+  height: 16px;
+
+  background-color: var(--color-white);
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.switcher-circle-active {
+  transform: translateX(14px);
+}

@@ -20,6 +20,4 @@ export type ProductCreateDto = Omit<Product, 'id' | 'created_at' | 'updated_at' 
 export interface ProductResponse {
   products: Product[]
   total: number
-  limit: number
-  offset: number
 }
